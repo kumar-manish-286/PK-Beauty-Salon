@@ -1,0 +1,1332 @@
+/* =========================================================
+   PK BEAUTY SALON
+   PORTFOLIO PAGE CSS
+   ========================================================= */
+
+/* =========================================================
+   GOOGLE FONTS
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Philosopher:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* =========================================================
+   ROOT VARIABLES
+   ========================================================= */
+:root {
+    --font-primary: 'Poppins', sans-serif;
+    --font-heading: 'Philosopher', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+    --color-primary: #e41345;
+    --color-primary-dark: #c70f3a;
+    --color-pink: #f70077;
+    --color-dark: #1a1a1a;
+    --color-dark-blue: #243673;
+    --color-text: #3e4359;
+    --color-light: #f7f7f7;
+    --color-white: #ffffff;
+    --color-border: #e8e8e8;
+
+    --shadow-small: 0 8px 25px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.12);
+    --shadow-large: 0 25px 60px rgba(0, 0, 0, 0.16);
+
+    --radius-small: 8px;
+    --radius-medium: 14px;
+    --radius-large: 22px;
+
+    --transition: all 0.35s ease;
+    --container: 1200px;
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
+    color: var(--color-text);
+    background: var(--color-white);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+address {
+    font-style: normal;
+}
+
+/* =========================================================
+   GLOBAL CONTAINER
+   ========================================================= */
+.portfolio-intro-content,
+.gallery-heading,
+.beforeAfter-heading,
+.portfolio-cta-content {
+    width: min(calc(100% - 40px), var(--container));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        min-height 0.3s ease;
+}
+
+header.scrolled {
+    min-height: 68px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+header .logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+header .logo:hover {
+    color: var(--color-pink);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+header nav ul li {
+    position: relative;
+}
+
+header nav ul li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 45px;
+    font-family: var(--font-secondary);
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    transition: var(--transition);
+    position: relative;
+}
+
+header nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active,
+header nav ul li a[aria-current="page"] {
+    color: var(--color-primary);
+}
+
+header nav ul li a:hover::after,
+header nav ul li a.active::after,
+header nav ul li a[aria-current="page"]::after {
+    width: 100%;
+}
+
+/* =========================================================
+   PHONE BUTTON
+   ========================================================= */
+#NavNum {
+    color: var(--color-white) !important;
+    background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-pink)
+    );
+    padding: 9px 18px;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(228, 19, 69, 0.2);
+}
+
+#NavNum::after {
+    display: none;
+}
+
+#NavNum:hover {
+    color: var(--color-white) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(228, 19, 69, 0.28);
+}
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+.menuToggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 1100;
+}
+
+.menuToggle::before,
+.menuToggle::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    width: 24px;
+    height: 2px;
+    background: var(--color-dark);
+    transition:
+        transform 0.3s ease,
+        top 0.3s ease;
+}
+
+.menuToggle::before {
+    top: 15px;
+}
+
+.menuToggle::after {
+    top: 25px;
+}
+
+header.active .menuToggle::before {
+    top: 20px;
+    transform: rotate(45deg);
+}
+
+header.active .menuToggle::after {
+    top: 20px;
+    transform: rotate(-45deg);
+}
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+.sectionFirst {
+    position: relative;
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 150px 5% 100px;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+/* Background image
+   Increased visibility from the original 0.72 */
+.sectionFirst::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        135deg,
+        rgba(255, 210, 227, 0.38),
+        rgba(255, 255, 255, 0.08)
+    ), url("../img/portfolioBackGround.jpeg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: -2;
+}
+
+/* Soft overlay
+   Reduced so the background image remains clearly visible */
+.sectionFirst::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.18),
+        rgba(255, 255, 255, 0.08)
+
+    );
+    z-index: -1;
+}
+    /* Keep hero copy readable over the brighter image. */
+    .page-hero-content {
+        padding: 24px 30px;
+        border-radius: 18px;
+        background: rgba(255, 248, 251, .58);
+        box-shadow: 0 12px 35px rgba(92, 35, 54, .08);
+    position: relative;
+    z-index: 3;
+        padding: 28px 36px;
+        border: 1px solid rgba(255, 255, 255, .62);
+        border-radius: 22px;
+        background: rgba(255, 248, 251, .62);
+        box-shadow: 0 18px 45px rgba(92, 35, 54, .12);
+    animation: heroContentUp 1s ease-out both;
+}
+
+.hero-small-title {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    color: var(--color-primary);
+}
+
+.sectionFirst h1 {
+    margin-bottom: 20px;
+    font-family: var(--font-heading);
+    font-size: clamp(3.2rem, 7vw, 6rem);
+    line-height: 1.05;
+    font-weight: 700;
+    color: #1b1216;
+    text-shadow: 0 2px 10px rgba(255,255,255,.32);
+}
+
+.page-hero-content p {
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: var(--font-body);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: rgba(39, 27, 31, 0.85);
+    line-height: 1.8;
+}
+
+/* =========================================================
+   HERO DECORATIVE SVG
+   ========================================================= */
+.transform-img {
+    position: absolute;
+    right: -20px;
+    top: 95px;
+    width: min(260px, 25vw);
+    z-index: 1;
+    opacity: 0.35;
+    pointer-events: none;
+    animation: decorativeFloat 5s ease-in-out infinite;
+}
+
+.transform-img img {
+    width: 100%;
+    height: auto;
+}
+
+/* =========================================================
+   HERO ANIMATIONS
+   ========================================================= */
+@keyframes heroContentUp {
+    from {
+        opacity: 0;
+        transform: translateY(45px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes decorativeFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* =========================================================
+   PORTFOLIO INTRO
+   ========================================================= */
+.portfolio-intro {
+    padding: 100px 0 80px;
+    background: var(--color-white);
+    text-align: center;
+}
+
+.portfolio-intro-content {
+    max-width: 850px;
+}
+
+.section-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-family: var(--font-secondary);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+}
+
+.portfolio-intro h2,
+.gallery-heading h2,
+.beforeAfter-heading h2,
+.portfolio-cta h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-dark);
+    line-height: 1.2;
+}
+
+.portfolio-intro h2 {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    margin-bottom: 22px;
+}
+
+.portfolio-intro p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--color-text);
+}
+
+/* =========================================================
+   GALLERY SECTION
+   ========================================================= */
+.gallery-section {
+    padding: 80px 0 110px;
+    background: var(--color-light);
+}
+
+.gallery-heading {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.gallery-heading h2 {
+    font-size: clamp(2.1rem, 4vw, 3.4rem);
+    margin-bottom: 15px;
+}
+
+.gallery-heading p {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    line-height: 1.8;
+}
+
+/* =========================================================
+   GALLERY GRID
+   ========================================================= */
+.gallery {
+    width: min(calc(100% - 40px), 1200px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* =========================================================
+   GALLERY ITEM
+   ========================================================= */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-medium);
+    background: var(--color-white);
+    box-shadow: var(--shadow-small);
+    aspect-ratio: 4 / 5;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        transform 0.6s ease,
+        opacity 0.6s ease,
+        box-shadow 0.35s ease;
+}
+
+.gallery-item.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-item:nth-child(1) {
+    transition-delay: 50ms;
+}
+
+.gallery-item:nth-child(2) {
+    transition-delay: 100ms;
+}
+
+.gallery-item:nth-child(3) {
+    transition-delay: 150ms;
+}
+
+.gallery-item:nth-child(4) {
+    transition-delay: 200ms;
+}
+
+.gallery-item:nth-child(5) {
+    transition-delay: 250ms;
+}
+
+.gallery-item:nth-child(6) {
+    transition-delay: 300ms;
+}
+
+.gallery-item:nth-child(7) {
+    transition-delay: 350ms;
+}
+
+.gallery-item:nth-child(8) {
+    transition-delay: 400ms;
+}
+
+/* =========================================================
+   GALLERY IMAGE
+   ========================================================= */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition:
+        transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.gallery-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.25),
+        transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-large);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+/* =========================================================
+   DISCOUNT SECTION
+   ========================================================= */
+.DiscountSection {
+    width: min(calc(100% - 40px), 1150px);
+    margin: 100px auto;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 230px 1fr auto;
+    align-items: center;
+    gap: 45px;
+    background: linear-gradient(135deg, #ffffff, #fff5f8);
+    border: 1px solid rgba(228, 19, 69, 0.1);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.DiscountSection::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    right: -100px;
+    bottom: -120px;
+    border-radius: 50%;
+    background: rgba(247, 0, 119, 0.06);
+}
+
+.DiscountSection .img {
+    position: relative;
+    z-index: 1;
+}
+
+.DiscountSection .img img {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.1));
+    transition: transform 0.5s ease;
+}
+
+.DiscountSection:hover .img img {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+/* =========================================================
+   DISCOUNT TEXT
+   ========================================================= */
+.DiscountSection .textinfo {
+    position: relative;
+    z-index: 1;
+}
+
+.DiscountSection .textinfo h2 {
+    max-width: 650px;
+    margin-bottom: 15px;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.2;
+    color: var(--color-dark);
+}
+
+.DiscountSection .textinfo p {
+    max-width: 650px;
+    margin-bottom: 8px;
+    font-family: var(--font-body);
+    line-height: 1.8;
+}
+
+.DiscountSection .textinfo small {
+    color: #777;
+    font-size: 0.78rem;
+}
+
+/* =========================================================
+   DISCOUNT BUTTON
+   ========================================================= */
+.DiscountSection > a {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 190px;
+    padding: 14px 22px;
+    border-radius: 40px;
+    background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-pink)
+    );
+    color: var(--color-white);
+    font-family: var(--font-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    box-shadow: 0 12px 28px rgba(228, 19, 69, 0.2);
+    transition: var(--transition);
+}
+
+.DiscountSection > a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 17px 35px rgba(228, 19, 69, 0.3);
+}
+
+/* =========================================================
+   BEFORE & AFTER SECTION
+   ========================================================= */
+.beforeAfter-section {
+    padding: 100px 0;
+    background: var(--color-white);
+}
+
+.beforeAfter-heading {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.beforeAfter-heading h2 {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    margin-bottom: 15px;
+}
+
+.beforeAfter-heading p {
+    font-family: var(--font-body);
+    line-height: 1.8;
+}
+
+/* =========================================================
+   BEFORE AFTER GRID
+   ========================================================= */
+.beforeAfter {
+    width: min(calc(100% - 40px), 1200px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px;
+}
+
+/* =========================================================
+   TRANSFORMATION CARD
+   ========================================================= */
+.beforeAfter .gridBox {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 16px;
+    background: var(--color-light);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+    transition: var(--transition);
+}
+
+.beforeAfter .gridBox:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* =========================================================
+   BEFORE / AFTER BOX
+   ========================================================= */
+.beforeAfter .gridBox .box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.beforeAfter .gridBox .box:nth-child(1) {
+    flex-direction: column;
+}
+
+/* =========================================================
+   BEFORE AFTER IMAGE
+   ========================================================= */
+.beforeAfter .gridBox .box .img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #eeeeee;
+}
+
+.beforeAfter .gridBox .box .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.beforeAfter .gridBox:hover .box .img img {
+    transform: scale(1.06);
+}
+
+/* =========================================================
+   BEFORE AFTER LABEL
+   ========================================================= */
+.beforeAfter .gridBox .box .text {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+/* =========================================================
+   PORTFOLIO CTA
+   ========================================================= */
+.portfolio-cta {
+    position: relative;
+    padding: 110px 0;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        #fff5f8,
+        #ffffff
+    );
+    overflow: hidden;
+}
+
+.portfolio-cta::before {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    left: -150px;
+    top: -150px;
+    background: rgba(228, 19, 69, 0.05);
+}
+
+.portfolio-cta::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    right: -100px;
+    bottom: -130px;
+    background: rgba(247, 0, 119, 0.05);
+}
+
+.portfolio-cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.portfolio-cta h2 {
+    margin-bottom: 20px;
+    font-size: clamp(2.3rem, 5vw, 4rem);
+}
+
+.portfolio-cta p {
+    max-width: 720px;
+    margin: 0 auto 30px;
+    font-family: var(--font-body);
+    line-height: 1.9;
+}
+
+/* =========================================================
+   CTA BUTTONS
+   ========================================================= */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 50px;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-pink)
+    );
+    color: var(--color-white);
+    font-family: var(--font-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(228, 19, 69, 0.2);
+    transition: var(--transition);
+}
+
+.btn:hover {
+    color: var(--color-white);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(228, 19, 69, 0.3);
+}
+
+.btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+.btn.secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
+    box-shadow: none;
+}
+
+.btn.secondary:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: 0 12px 28px rgba(228, 19, 69, 0.2);
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+@media (max-width: 1024px) {
+
+    header {
+        padding: 0 4%;
+    }
+
+    header nav ul {
+        gap: 1.25rem;
+    }
+
+    header nav ul li a {
+        font-size: 0.78rem;
+    }
+
+    .sectionFirst {
+        min-height: 520px;
+        padding: 140px 4% 90px;
+    }
+
+    .sectionFirst::before {
+        background-position: center center;
+        opacity: 0.95;
+    }
+
+    .sectionFirst::after {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.52),
+            rgba(255, 255, 255, 0.28)
+        );
+    }
+
+    .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .DiscountSection {
+        grid-template-columns: 200px 1fr;
+        gap: 30px;
+        padding: 40px;
+    }
+
+    .DiscountSection > a {
+        grid-column: 2;
+        justify-self: start;
+    }
+
+    .beforeAfter {
+        gap: 25px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+@media (max-width: 768px) {
+
+    header {
+        min-height: 56px;
+        padding: 0 18px;
+    }
+
+    header.scrolled {
+        min-height: 54px;
+    }
+
+    header .logo {
+        font-size: 1.45rem;
+    }
+
+    .menuToggle {
+        display: block;
+    }
+
+    header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        display: block;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: max-height 0.35s ease;
+    }
+
+    header.active nav {
+        max-height: 520px;
+    }
+
+    header nav ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 18px 18px;
+    }
+
+    header nav ul li {
+        width: 100%;
+    }
+
+    header nav ul li a {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+
+    header nav ul li a::after {
+        display: none;
+    }
+
+    #NavNum {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    /* ---------------------------------------------------------
+       MOBILE HERO - stronger image visibility
+       --------------------------------------------------------- */
+    .sectionFirst {
+        min-height: 420px;
+        padding: 115px 20px 65px;
+    }
+
+    .sectionFirst::before {
+        background-position: center center;
+        background-size: cover;
+        opacity: 0.98;
+    }
+
+    .sectionFirst::after {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.48),
+            rgba(255, 255, 255, 0.24)
+        );
+    }
+
+    .page-hero-content {
+        width: 100%;
+    }
+
+    .hero-small-title {
+        margin-bottom: 10px;
+        font-size: 0.68rem;
+        letter-spacing: 0.17em;
+    }
+
+    .sectionFirst h1 {
+        margin-bottom: 16px;
+        font-size: clamp(2.8rem, 12vw, 4.1rem);
+        line-height: 1.03;
+    }
+
+    .page-hero-content p {
+        max-width: 345px;
+        font-size: 0.88rem;
+        line-height: 1.7;
+    }
+
+    .transform-img {
+        right: -55px;
+        top: 75px;
+        width: 180px;
+        opacity: 0.25;
+    }
+
+    .portfolio-intro {
+        padding: 70px 0 60px;
+    }
+
+    .portfolio-intro-content,
+    .gallery-heading,
+    .beforeAfter-heading,
+    .portfolio-cta-content {
+        width: min(calc(100% - 36px), var(--container));
+    }
+
+    .portfolio-intro h2 {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+    }
+
+    .portfolio-intro p {
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+
+    .gallery-section {
+        padding: 65px 0 75px;
+    }
+
+    .gallery-heading {
+        margin-bottom: 35px;
+    }
+
+    .gallery-heading h2 {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+    }
+
+    .gallery-heading p {
+        font-size: 0.88rem;
+    }
+
+    .gallery {
+        width: min(calc(100% - 36px), 1200px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .gallery-item {
+        border-radius: 11px;
+        aspect-ratio: 4 / 5;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .DiscountSection {
+        width: min(calc(100% - 36px), 1150px);
+        margin: 65px auto;
+        padding: 30px 22px;
+        grid-template-columns: 1fr;
+        gap: 22px;
+        text-align: center;
+    }
+
+    .DiscountSection .img img {
+        max-width: 180px;
+    }
+
+    .DiscountSection .textinfo h2 {
+        font-size: clamp(1.9rem, 9vw, 2.6rem);
+    }
+
+    .DiscountSection .textinfo p {
+        font-size: 0.88rem;
+    }
+
+    .DiscountSection > a {
+        grid-column: auto;
+        justify-self: center;
+        width: min(100%, 230px);
+    }
+
+    .beforeAfter-section {
+        padding: 70px 0;
+    }
+
+    .beforeAfter-heading {
+        margin-bottom: 35px;
+    }
+
+    .beforeAfter-heading h2 {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+    }
+
+    .beforeAfter-heading p {
+        font-size: 0.88rem;
+    }
+
+    .beforeAfter {
+        width: min(calc(100% - 36px), 1200px);
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .beforeAfter .gridBox {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .beforeAfter .gridBox .box {
+        gap: 8px;
+    }
+
+    .beforeAfter .gridBox .box .text {
+        font-size: 1rem;
+    }
+
+    .portfolio-cta {
+        padding: 75px 0;
+    }
+
+    .portfolio-cta h2 {
+        font-size: clamp(2.1rem, 10vw, 3rem);
+    }
+
+    .portfolio-cta p {
+        font-size: 0.88rem;
+        line-height: 1.8;
+    }
+
+    .cta-buttons {
+        gap: 10px;
+    }
+
+    .btn {
+        min-height: 46px;
+        padding: 11px 20px;
+        font-size: 0.76rem;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+@media (max-width: 480px) {
+
+    header .logo {
+        font-size: 1.3rem;
+    }
+
+    .sectionFirst {
+        min-height: 385px;
+        padding: 105px 16px 55px;
+    }
+
+    .sectionFirst::before {
+        opacity: 1;
+        background-position: center center;
+    }
+
+    .sectionFirst::after {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.43),
+            rgba(255, 255, 255, 0.20)
+        );
+    }
+
+    .hero-small-title {
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+    }
+
+    .sectionFirst h1 {
+        font-size: clamp(2.5rem, 13vw, 3.4rem);
+    }
+
+    .page-hero-content p {
+        max-width: 320px;
+        font-size: 0.82rem;
+    }
+
+    .transform-img {
+        right: -75px;
+        width: 160px;
+        opacity: 0.20;
+    }
+
+    .gallery {
+        width: calc(100% - 28px);
+        gap: 9px;
+    }
+
+    .gallery-item {
+        border-radius: 9px;
+    }
+
+    .DiscountSection {
+        width: calc(100% - 28px);
+        padding: 25px 18px;
+    }
+
+    .beforeAfter {
+        width: calc(100% - 28px);
+    }
+
+    .beforeAfter .gridBox {
+        padding: 8px;
+    }
+
+    .portfolio-cta-content {
+        width: calc(100% - 28px);
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-buttons .btn {
+        width: min(100%, 240px);
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Keep navbar labels stable on hover and active states. */
+header nav ul li a,
+header nav ul li a:hover,
+header nav ul li a:focus,
+header nav ul li a.active,
+header nav ul li a[aria-current="page"] {
+    font-size: .84rem;
+    transform: none;
+}
