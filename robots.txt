@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pk-beauty-salon.vercel.app/sitemap.xml
